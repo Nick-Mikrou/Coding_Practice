@@ -2,8 +2,7 @@
 
 using namespace std;
 
-class Node
-{
+class Node {
 	public:
 		size_t data;
 		Node* next;
@@ -25,7 +24,55 @@ class Node
 };
 
 class LinkedList : public Node {
+    private:
+        Node* head;
 
+    public:
+        LinkedList() noexcept
+			:head(nullptr)
+		{
+			cout << "Default constructor of the class LinkedList for the object   0x:" << this << endl;
+		}	// Default Constructor
+
+		LinkedList(const size_t thedata) noexcept
+			:Node(thedata),head(this)
+		{
+			cout << "Constructor of the class LinkedList for the object           0x:" << this << endl;
+		}	// Constructor
+
+		void AddNode(const size_t data) noexcept
+		{
+			Node* temp = new Node(data);
+			temp->next = head;
+			head = temp;
+		}	// Add Node
+
+		void PrintLinkedList() noexcept
+		{
+			Node* tmp = head;
+			while (tmp)
+			{
+				cout << tmp->data << " -> ";
+				tmp = tmp->next;
+			}
+		}	// Print Linked List
+
+		Node ReverseLinkedList() noexcept
+		{
+			Node* prev = nullptr;
+			while (head)
+			{
+				Node* tmp = head->next;
+				head->next = prev;
+				prev = head;
+				head = tmp;
+			}
+			head = prev;
+			return *head;
+		}
+
+		~LinkedList() noexcept
+		{}	//Destructor
 }
 
 int main() {
