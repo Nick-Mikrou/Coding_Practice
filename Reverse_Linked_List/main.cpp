@@ -77,7 +77,21 @@ class LinkedList : public Node {
 
 int main() {
 
+    cout << "Create the list" << endl;
+    LinkedList list(13);
 
+    cout << "Add nodes" << endl;
+    list.AddNode(45);
+    list.AddNode(78);
+    list.AddNode(100);
+    list.AddNode(32);
 
+    cout << "Before reverse" << endl;
+    list.PrintLinkedList();
+
+    cout << "After reverse" << endl;
+    list.ReverseLinkedList();
+    list.PrintLinkedList();
+    
     return 0;
 }
